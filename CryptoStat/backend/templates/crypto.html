@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body>
+<header>
+    <div class="px-3 py-2 text-bg-dark border-bottom">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="{% url 'index' %}" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                    <img src="{% static 'images/logo.png' %}" width="20%" height="auto"
+                         class="d-flex align-items-center my-2 my-lg-0 me-lg-auto" alt="Logo">
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container mt-5">
+    <h1>Crypto Detail</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Price Chart of the last year</h2>
+            <canvas id="priceChart" width="400" height="400"></canvas>
+        </div>
+        <div class="col-md-6">
+            <h2>Stats</h2>
+            <p>Here are some statistics of the cryptocurrency</p>
+            <ul>
+                <li><strong>Symbol:</strong> {{ crypto.coin.symbol }}</li>
+                <li><strong>Status:</strong> {{ crypto.coin.status }}</li>
+                <li><strong>Last Price:</strong> {{ crypto.status.lastPrice }} BTC</li>
+                <li><strong>Price Change:</strong> {{ crypto.status.priceChange }}</li>
+                <li><strong>Weighted Average Price:</strong> {{ crypto.status.weightedAvgPrice }}</li>
+                <li><strong>Previous Close Price:</strong> {{ crypto.status.prevClosePrice }}</li>
+                <li><strong>Last Quantity:</strong> {{ crypto.status.lastQty }}</li>
+                <li><strong>Bid Price:</strong> {{ crypto.status.bidPrice }}</li>
+                <li><strong>Bid Quantity:</strong> {{ crypto.status.bidQty }}</li>
+                <li><strong>Ask Price:</strong> {{ crypto.status.askPrice }}</li>
+                <li><strong>Ask Quantity:</strong> {{ crypto.status.askQty }}</li>
+                <li><strong>Open Price:</strong> {{ crypto.status.openPrice }}</li>
+                <li><strong>High Price:</strong> {{ crypto.status.highPrice }}</li>
+                <li><strong>Low Price:</strong> {{ crypto.status.lowPrice }}</li>
+                <li><strong>Volume:</strong> {{ crypto.status.volume }}</li>
+                <li><strong>Quote Volume:</strong> {{ crypto.status.quoteVolume }}</li>
+                <li><strong>Open Time:</strong> {{ crypto.status.openTime }}</li>
+                <li><strong>Close Time:</strong> {{ crypto.status.closeTime }}</li>
+                <li><strong>First ID:</strong> {{ crypto.status.firstId }}</li>
+                <li><strong>Last ID:</strong> {{ crypto.status.lastId }}</li>
+                <li><strong>Count:</strong> {{ crypto.status.count }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="px-3 py-2 border-top mt-3">
+        <div class="container text-center">
+            <p>&copy; 2024 Your Company Name</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        const response = await fetch(`/get_currency_data/{{ crypto.coin.symbol }}/`);
+        const data = await response.json();
+        console.log(data);
+        const priceData = data;
+
+        const canvasId = 'priceChart';
+
+        function buildChart(canvasId, priceData) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+
+            let labels = [];
+            let prices = [];
+
+            priceData.forEach(entry => {
+                labels.push(new Date(entry.timestamp).toLocaleDateString());
+                prices.push(entry.price);
+            });
+
+            if (labels.length === 0 || prices.length === 0) {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['No data available'],
+                        datasets: [{
+                            label: 'Price',
+                            data: [0],
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                type: 'category'
+                            },
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            } else {
+                new Chart(ctx, {
+                    type: "bar",
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: "Price($)",
+                            backgroundColor: "#79AEC8",
+                            borderColor: "#417690",
+                            data: prices
+                        }]
+                    },
+                    options: {
+                        title: {
+                            text: "Gross Volume in 2020",
+                            display: true
+                        }
+                    }
+                });
+            }
+        }
+
+        buildChart(canvasId, priceData);
+    });
+
+</script>
+</body>
+{% endblock %}
