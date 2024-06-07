@@ -11,10 +11,12 @@ cffi==1.16.0
 channels==4.1.0
 charset-normalizer==3.3.2
 constantly==23.10.4
+crispy-bootstrap5==2024.2
 cryptography==42.0.7
 daphne==4.1.2
 dateparser==1.2.0
 Django==5.0.6
+django-crispy-forms==2.1
 frozenlist==1.4.1
 hyperlink==21.0.0
 idna==3.7

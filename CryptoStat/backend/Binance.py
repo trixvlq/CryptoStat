@@ -2,8 +2,8 @@ from datetime import datetime, timedelta
 from binance.client import AsyncClient
 import asyncio
 
-API_KEY = 'твой апи кей'
-API_SECRET = 'твой апи секрет'
+API_KEY = ''
+API_SECRET = ''
 
 
 # фабрика т.к. спот создается один раз и используется в последующихся функциях

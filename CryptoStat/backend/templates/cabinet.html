@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Hello, {{ user.username }}</h1>
+    <h2>Favorite Cryptocurrencies</h2>
+    <div class="row">
+        {% if coins|length > 0 %}
+            {% for crypto in coins %}
+                <div class="col-md-4">
+                    <div class="card feature">
+                        <h3 class="coin-symbol">{{ crypto.coin.symbol }}</h3>
+                        <ul class="coin-info">
+                            <li class="info-item"><span class="info-label">Last Price:</span> <span class="info-value">{{ crypto.status.lastPrice }}</span></li>
+                            <li class="info-item"><span class="info-label">Price Change:</span> <span class="info-value">{{ crypto.status.priceChange }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No favorite cryptocurrencies yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

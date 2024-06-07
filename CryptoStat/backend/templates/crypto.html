@@ -1,58 +1,76 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<body>
-<header>
-    <div class="px-3 py-2 text-bg-dark border-bottom">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="{% url 'index' %}" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                    <img src="{% static 'images/logo.png' %}" width="20%" height="auto"
-                         class="d-flex align-items-center my-2 my-lg-0 me-lg-auto" alt="Logo">
-                </a>
-            </div>
-        </div>
-    </div>
-</header>
+
 
 <div class="container mt-5">
     <h1>Crypto Detail</h1>
     <div class="row">
         <div class="col-md-6">
-            <h2>Price Chart of the last year</h2>
-            <canvas id="priceChart" width="400" height="400"></canvas>
+            <div class="card feature">
+                <h2>Price Chart of the last year</h2>
+                <canvas id="priceChart" width="400" height="400"></canvas>
+            </div>
         </div>
         <div class="col-md-6">
-            <h2>Stats</h2>
-            <p>Here are some statistics of the cryptocurrency</p>
-            <ul>
-                <li><strong>Symbol:</strong> {{ crypto.coin.symbol }}</li>
-                <li><strong>Status:</strong> {{ crypto.coin.status }}</li>
-                <li><strong>Last Price:</strong> {{ crypto.status.lastPrice }} BTC</li>
-                <li><strong>Price Change:</strong> {{ crypto.status.priceChange }}</li>
-                <li><strong>Weighted Average Price:</strong> {{ crypto.status.weightedAvgPrice }}</li>
-                <li><strong>Previous Close Price:</strong> {{ crypto.status.prevClosePrice }}</li>
-                <li><strong>Last Quantity:</strong> {{ crypto.status.lastQty }}</li>
-                <li><strong>Bid Price:</strong> {{ crypto.status.bidPrice }}</li>
-                <li><strong>Bid Quantity:</strong> {{ crypto.status.bidQty }}</li>
-                <li><strong>Ask Price:</strong> {{ crypto.status.askPrice }}</li>
-                <li><strong>Ask Quantity:</strong> {{ crypto.status.askQty }}</li>
-                <li><strong>Open Price:</strong> {{ crypto.status.openPrice }}</li>
-                <li><strong>High Price:</strong> {{ crypto.status.highPrice }}</li>
-                <li><strong>Low Price:</strong> {{ crypto.status.lowPrice }}</li>
-                <li><strong>Volume:</strong> {{ crypto.status.volume }}</li>
-                <li><strong>Quote Volume:</strong> {{ crypto.status.quoteVolume }}</li>
-                <li><strong>Open Time:</strong> {{ crypto.status.openTime }}</li>
-                <li><strong>Close Time:</strong> {{ crypto.status.closeTime }}</li>
-                <li><strong>First ID:</strong> {{ crypto.status.firstId }}</li>
-                <li><strong>Last ID:</strong> {{ crypto.status.lastId }}</li>
-                <li><strong>Count:</strong> {{ crypto.status.count }}</li>
-            </ul>
+            <div class="card feature">
+                <h2>Stats</h2>
+                <p>Here are some statistics of the cryptocurrency</p>
+                <ul class="coin-info">
+                    <li class="info-item"><span class="info-label">Symbol:</span> <span class="info-value">{{ crypto.coin.symbol }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Status:</span> <span class="info-value">{{ crypto.coin.status }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Last Price:</span> <span class="info-value">{{ crypto.status.lastPrice }} BTC</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Price Change:</span> <span class="info-value">{{ crypto.status.priceChange }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Weighted Average Price:</span> <span
+                            class="info-value">{{ crypto.status.weightedAvgPrice }}</span></li>
+                    <li class="info-item"><span class="info-label">Previous Close Price:</span> <span
+                            class="info-value">{{ crypto.status.prevClosePrice }}</span></li>
+                    <li class="info-item"><span class="info-label">Last Quantity:</span> <span class="info-value">{{ crypto.status.lastQty }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Bid Price:</span> <span class="info-value">{{ crypto.status.bidPrice }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Bid Quantity:</span> <span class="info-value">{{ crypto.status.bidQty }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Ask Price:</span> <span class="info-value">{{ crypto.status.askPrice }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Ask Quantity:</span> <span class="info-value">{{ crypto.status.askQty }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Open Price:</span> <span class="info-value">{{ crypto.status.openPrice }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">High Price:</span> <span class="info-value">{{ crypto.status.highPrice }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Low Price:</span> <span class="info-value">{{ crypto.status.lowPrice }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Volume:</span> <span class="info-value">{{ crypto.status.volume }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Quote Volume:</span> <span class="info-value">{{ crypto.status.quoteVolume }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Open Time:</span> <span class="info-value">{{ crypto.status.openTime }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Close Time:</span> <span class="info-value">{{ crypto.status.closeTime }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">First ID:</span> <span class="info-value">{{ crypto.status.firstId }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Last ID:</span> <span class="info-value">{{ crypto.status.lastId }}</span>
+                    </li>
+                    <li class="info-item"><span class="info-label">Count:</span> <span class="info-value">{{ crypto.status.count }}</span>
+                    </li>
+                </ul>
+            </div>
+            <form method="post" action="{% url 'add_to_favs' %}">
+                {% csrf_token %}
+                <input type="hidden" name="symbol" value="{{ crypto.coin.symbol }}">
+                <button type="submit" class="btn btn-primary">Add to Favorites</button>
+            </form>
         </div>
     </div>
 </div>
 <footer>
-    <div class="px-3 py-2 border-top mt-3">
+    <div class="px-3 py-2">
         <div class="container text-center">
             <p>&copy; 2024 Your Company Name</p>
         </div>
@@ -131,5 +149,4 @@
     });
 
 </script>
-</body>
 {% endblock %}

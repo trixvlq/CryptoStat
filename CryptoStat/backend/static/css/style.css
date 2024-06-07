@@ -1,61 +1,119 @@
 body {
-    background-color: #f8f9fa;
+    font-family: 'Inter', sans-serif;
+    background: #141E30;
+    color: #C0C0C0;
+    padding-bottom: 50px;
 }
-a {
-    color: #000000;
-    text-decoration: none;
+
+header {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #0b1624;
 }
-.navbar {
-    background-color: #343a40;
+
+.nav-link {
+    transition: color 0.2s;
+    color: #C0C0C0;
 }
-.navbar-brand, .nav-link {
-    color: #fff;
+
+.nav-link:hover {
+    color: #A9CCE3;
 }
-.hero-section {
-    background: url('hero-image.jpg') no-repeat center center;
-    background-size: cover;
-    height: 70vh;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px;
+    border-color: #000000;
+    background-color: #1B263B;
+    color: #C0C0C0;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.text-center {
     text-align: center;
 }
-.hero-section h1 {
-    font-size: 4rem;
+
+h1 {
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    color: #A9CCE3;
 }
+
+.form-control {
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: #0b1624;
+    color: #C0C0C0;
+    border: 1px solid #141E30;
+}
+
+
 .feature {
-    padding: 2rem;
     text-align: center;
-}
-.coin-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
     padding: 20px;
-    background-color: #f9f9f9;
+    background: #1B263B;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #C0C0C0;
+}
+
+.feature h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #A9CCE3;
+}
+
+.feature p {
+    font-size: 1em;
+    color: #B0C4DE;
+}
+
+.feature canvas {
+    margin: 20px 0;
 }
 
 .coin-symbol {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #A9CCE3;
 }
 
 .coin-info {
-    display: flex;
-    flex-wrap: wrap;
+    margin-top: 10px;
 }
 
 .info-item {
-    flex: 1 1 calc(50% - 10px);
-    margin-right: 10px;
-    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
 }
 
 .info-label {
     font-weight: bold;
-    color: #333;
 }
 
 .info-value {
-    color: #555;
+    color: #B0C4DE;
+}
+
+.btn-primary {
+    background-color: #2E86C1;
+    border-color: #000000;
+    color: #C0C0C0;
+}
+
+.btn-primary:hover {
+    background-color: #3498DB;
+    border-color: #000000;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
